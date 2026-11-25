@@ -2,7 +2,7 @@
 
 ## What FinPath does
 
-FinPath is a local prototype for gathering and analysing software requirements for financial services projects. Its domain is Financial Requirements Engineering. It uses stakeholder answers and supporting documents to create evidence-linked draft requirements, identify review gaps, prepare candidate control mappings, and recommend a software delivery lifecycle (SDLC).
+FinPath is a local prototype for analysing software requirements for financial services projects. Enter a single problem statement; the app automatically creates evidence-linked draft requirements, identifies review gaps, prepares candidate control mappings, and generates an SDLC recommendation and workflow. It does not ask follow-up interview questions.
 
 The project addresses the supplied problem statement's main needs: unstructured finance requirements, ambiguity and conflict, evidence and traceability, security and compliance review, human approval, and project-specific SDLC selection.
 
@@ -10,7 +10,7 @@ FinPath is an advisory prototype. A person remains responsible for approving req
 
 ## Main capabilities
 
-- **Adaptive finance interview:** Starts from a project objective and user roles, then asks about workflow, rules, exceptions, integrations, security, privacy, scale, delivery, and rollout. It has interview prompts for onboarding, loans, payments, fraud, insurance, and reporting.
+- **Single-step project creation:** Enter a finance problem statement or use the built-in personal loan sample. Requirements, quality analysis, SDLC analysis, and the project workflow generate automatically.
 - **Document intake and retrieval:** Accepts `.txt`, `.md`, `.csv`, `.pdf`, and `.docx` files, up to 5 MB each. Sources are split into evidence chunks and indexed in a project-specific ChromaDB collection.
 - **Sensitive-pattern masking:** Masks common long account/card-number patterns, one tax-ID-like pattern, and one national-ID-like pattern before indexing. This does not detect every kind of personal or confidential information.
 - **Grounded requirement drafts:** Retrieves relevant evidence and generates draft requirements with source references. Without an API key, the app creates conservative evidence-only drafts. With an OpenAI-compatible API configured, it can request structured LLM drafts and checks that generated citations point to retrieved evidence.

@@ -1,11 +1,11 @@
 # FinPath
 
-FinPath is a finance-focused requirements engineering application based on the supplied problem statement. Its domain is Financial Requirements Engineering. It turns stakeholder responses and supporting documents into evidence-linked draft requirements, runs coordinated specialist review passes, highlights quality and control gaps, and recommends an SDLC approach for human review.
+FinPath is a finance-focused requirements engineering application. Enter one finance problem statement and the app automatically creates evidence-linked draft requirements, runs specialist review passes, highlights quality and control gaps, and generates an SDLC recommendation with a project workflow. It does not ask follow-up interview questions.
 
 ## Highlights
 
-- Adaptive stakeholder interview for finance workflows including onboarding, lending, payments, fraud, insurance, and regulatory reporting.
-- Upload and process `.txt`, `.md`, `.csv`, `.pdf`, and `.docx` source documents.
+- Single problem statement input with a one-click sample problem.
+- Automatic requirements, quality review, SDLC analysis, and workflow generation.
 - Mask common account/card, tax-ID, and national-ID-like patterns before indexing.
 - Store embeddings in a persistent, per-project ChromaDB collection.
 - Save projects locally and reopen them from the workspace.
@@ -20,7 +20,7 @@ FinPath is a finance-focused requirements engineering application based on the s
 ## RAG Flow
 
 ```text
-Stakeholder interview + uploaded documents
+Finance problem statement
               |
        Mask sensitive patterns
               |
@@ -57,7 +57,7 @@ pip install -r requirements.txt
 .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Open the local FinPath address: http://finpath.localhost:8000. `finpath.localhost` is a local development address and is not a public internet domain.
+Open http://127.0.0.1:8000. Enter a finance problem statement or click **Fill sample problem**, then click **Generate SDLC and workflow**. The app automatically generates draft requirements, quality analysis, an SDLC recommendation, and its workflow.
 
 To use a different port, replace `8000` in the start command, for example `--port 8080`, then open `http://finpath.localhost:8080`.
 

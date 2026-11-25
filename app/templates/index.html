@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FinPath | Financial Requirements Engineering</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">F</span><span>FinPath</span></div>
+      <p>Financial Requirements Engineering · evidence-grounded analysis and SDLC advisory</p>
+      <a id="exportLink" class="icon-action is-hidden" title="Export project JSON" download>Export JSON</a>
+      <a id="reportLink" class="icon-action is-hidden" title="Download software requirements specification" download>Download SRS</a>
+    </header>
+    <main>
+      <section class="workspace" aria-labelledby="workspace-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">Project workspace</p><h1 id="workspace-title">Traceable requirement decisions</h1></div>
+          <div class="heading-actions"><span id="projectState" class="state">No project loaded</span><button id="newProjectButton" class="quiet-button is-hidden" type="button">New project</button></div>
+        </div>
+        <details class="saved-projects">
+          <summary>Open a saved finance project</summary>
+          <div id="savedProjects" class="saved-project-list"><p class="muted">Loading saved projects…</p></div>
+        </details>
+        <form id="interviewStartForm" class="intake">
+          <div class="interview-heading"><p class="eyebrow">Finance problem statement</p><p>Describe the finance problem. FinPath will generate a recommendation and project workflow automatically.</p></div>
+          <div class="starter-grid">
+            <label>Problem statement<textarea id="businessObjective" placeholder="Example: Customers need to apply for a personal loan online, get an eligibility decision quickly, and track application status." required minlength="10"></textarea></label>
+            <input id="functionality" type="hidden" value="Finance solution">
+          </div>
+          <button id="useSampleButton" class="quiet-button" type="button">Fill sample problem</button>
+          <button type="submit">Generate SDLC and workflow</button>
+        </form>
+        <section id="interviewSession" class="interview-session is-hidden" aria-live="polite">
+          <div class="interview-meta"><span id="questionProgress" class="state"></span><span id="answerCount" class="muted"></span></div>
+          <p id="questionTopic" class="eyebrow"></p>
+          <h2 id="interviewQuestion"></h2>
+          <textarea id="interviewAnswer" placeholder="Write the information you know. Specific rules, limits, conditions, and outcomes are especially useful."></textarea>
+          <div class="interview-actions"><button id="continueInterview" type="button">Save and continue</button><button id="skipInterviewQuestion" class="quiet-button" type="button">Skip for now</button></div>
+        </section>
+        <section id="interviewComplete" class="interview-complete is-hidden">
+          <p class="eyebrow">Interview ready</p><h2>Turn the conversation into evidence-grounded requirements</h2>
+          <p id="interviewSummary" class="muted"></p>
+          <button id="createProject" type="button">Create project</button>
+        </section>
+        <p class="quiet">Responses and optional documents are masked for common account, identity, and tax-ID patterns before local processing. Drafts are advisory and need human approval.</p>
+      </section>
+
+      <nav class="steps" aria-label="Pipeline stages">
+        <span class="active">1 Sources</span><span>2 Requirements</span><span>3 Quality</span><span>4 SDLC</span>
+      </nav>
+
+      <section id="documentsPanel" class="panel is-hidden" aria-labelledby="documents-title">
+        <div class="panel-title"><div><p class="eyebrow">RAG knowledge base</p><h2 id="documents-title">Indexed source documents</h2></div><button id="generateButton" type="button">Generate requirements</button></div>
+        <div id="ragSummary" class="rag-summary" aria-label="RAG index status"></div>
+        <div id="documentList" class="document-list"></div>
+        <div class="retrieval-toolbar"><label>Search indexed evidence<input id="retrievalQuery" placeholder="Ask the vector index about a requirement or control"></label><button id="retrieveButton" type="button">Retrieve</button><span id="retrievalCount" class="count"></span></div>
+        <div id="retrievalResults" class="retrieval-results"></div>
+      </section>
+
+      <section id="requirementsPanel" class="panel is-hidden" aria-labelledby="requirements-title">
+        <div class="panel-title"><div><p class="eyebrow">Human review required</p><h2 id="requirements-title">Generated requirements</h2></div><span id="requirementCount" class="count"></span></div>
+        <div id="requirementsList" class="requirements-list"></div>
+      </section>
+
+      <section id="qualityPanel" class="panel is-hidden" aria-labelledby="quality-title">
+        <div class="panel-title"><div><p class="eyebrow">Quality analysis</p><h2 id="quality-title">Review queue</h2></div><span id="issueCount" class="count"></span></div>
+        <div id="issuesList" class="issues-list"></div>
+      </section>
+
+      <section id="agentsPanel" class="panel is-hidden" aria-labelledby="agents-title">
+        <div class="panel-title"><div><p class="eyebrow">Coordinated specialist reviews</p><h2 id="agents-title">Finance project analysis</h2></div><span class="count">Human approval required</span></div>
+        <p class="muted agent-disclaimer">Each specialist pass uses project evidence and deterministic checks. Candidate control mappings are not legal or regulatory determinations.</p>
+        <div id="agentReviews" class="agent-grid"></div>
+        <div class="workflow">
+          <p class="eyebrow">Candidate compliance and control mappings</p>
+          <div id="complianceMappings"></div>
+        </div>
+        <div class="workflow">
+          <p class="eyebrow">Requirements traceability</p>
+          <div id="traceabilityRecords"></div>
+        </div>
+      </section>
+
+      <section id="sdlcPanel" class="panel is-hidden" aria-labelledby="sdlc-title">
+        <div class="panel-title"><div><p class="eyebrow">Architecture advisory</p><h2 id="sdlc-title">SDLC analysis</h2></div><button id="sdlcButton" type="button">Run SDLC analysis</button></div>
+        <div id="sdlcResult"></div>
+      </section>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="/static/app.js?v=problem-flow-2"></script>
+  </body>
+</html>

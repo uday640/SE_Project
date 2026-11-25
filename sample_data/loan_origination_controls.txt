@@ -1,0 +1,13 @@
+Sample Loan Origination Requirements Source
+
+This fictional example is provided for demonstration only. Replace it with approved, jurisdiction-specific lending policies before using the project for real decisions.
+
+The loan application service shall capture the requested principal amount, repayment term, applicant consent, and supporting documents before an application can be submitted.
+The service shall verify the applicant identity using the institution-approved identity provider before underwriting begins.
+The underwriting workflow shall record the policy version and source data used for each eligibility decision.
+The service must not issue a final decline when required applicant data is missing; it shall route the application to an authorised lending reviewer.
+The service shall provide an applicant with the application status and the next action required after each decision stage.
+Only authorised lending and compliance roles may view applicant financial documents.
+The service shall retain the application decision, reviewer identifier, and relevant timestamps in an auditable record according to the approved retention policy.
+The loan origination workflow shall make decision criteria and policy changes reviewable by the product owner, risk owner, and compliance officer before release.
+The project team shall define and approve response-time, availability, recovery, and transaction-volume targets before production readiness review.
